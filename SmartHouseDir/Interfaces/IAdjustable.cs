@@ -8,9 +8,9 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Interfaces
 	public interface IAdjustable<T>
 	{
 		T CurrentLevel { get; set; }
-		T Max { get; }
-		T Min { get; }
-		int Step { get; }
+		T Max { get; set; }
+		T Min { get; set; }
+		int Step { get; set; }
 
 		void Increase();
 		void Decrease();

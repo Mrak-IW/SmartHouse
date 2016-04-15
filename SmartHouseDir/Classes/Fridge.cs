@@ -11,20 +11,35 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 	public class Fridge : SmartDevice, IHaveThermostat, IOpenCloseable, IRepareable
 	{
 		const string devType = "холодильник";
-		private IAdjustable<int> dimmer;
+		private IAdjustable<int> thermostat;
 
-		public Fridge(string name, IAdjustable<int> dimmer)
+		public Fridge(string name)
 			: base(name)
 		{
-			if (dimmer.Max > 10)
+			this.Thermostat = null;
+		}
+
+		public Fridge(string name, IAdjustable<int> thermostat)
+			: base(name)
+		{
+			this.Thermostat = thermostat;
+		}
+
+		public IAdjustable<int> Thermostat
+		{
+			get
 			{
-				throw new ArgumentOutOfRangeException(string.Format("dimmer.Max = {0}C", dimmer.Max), "Зачем нужен холодильник, который будет греть?");
+				return this.thermostat;
 			}
-			if (dimmer.Min < -273)
+			set
 			{
-				throw new ArgumentOutOfRangeException(string.Format("dimmer.Min = {0}C", dimmer.Min), "За нарушение законов физики, программа приговорена к ексепшену");
+				thermostat = value;
+				if (value != null)
+				{
+					TempMax = value.Max;
+					TempMin = value.Min;
+				}
 			}
-			this.dimmer = dimmer;
 		}
 
 		public override string DeviceType
@@ -41,12 +56,12 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			get
 			{
-				return dimmer.CurrentLevel;
+				return Thermostat.CurrentLevel;
 			}
 
 			set
 			{
-				dimmer.CurrentLevel = value;
+				Thermostat.CurrentLevel = value;
 			}
 		}
 
@@ -54,7 +69,23 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			get
 			{
-				return dimmer.Max;
+				return Thermostat.Max;
+			}
+
+			set
+			{
+				if (value > 10)
+				{
+					Thermostat.Max = 10;
+				}
+				else if (value < -273)
+				{
+					Thermostat.Max = -273;
+				}
+				else
+				{
+					Thermostat.Max = value;
+				}
 			}
 		}
 
@@ -62,7 +93,36 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			get
 			{
-				return dimmer.Min;
+				return Thermostat.Min;
+			}
+
+			set
+			{
+				if (value > 10)
+				{
+					Thermostat.Min = 10;
+				}
+				else if (value < -273)
+				{
+					Thermostat.Min = -273;
+				}
+				else
+				{
+					Thermostat.Min = value;
+				}
+			}
+		}
+
+		public int Step
+		{
+			get
+			{
+				return Thermostat.Step;
+			}
+
+			set
+			{
+				Thermostat.Step = value;
 			}
 		}
 
@@ -75,7 +135,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			if (this.State == EPowerState.On)
 			{
-				dimmer.Decrease();
+				Thermostat.Decrease();
 			}
 		}
 
@@ -83,7 +143,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			if (this.State == EPowerState.On)
 			{
-				dimmer.Increase();
+				Thermostat.Increase();
 			}
 		}
 
@@ -109,8 +169,8 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			switch (State)
 			{
 				case EPowerState.On:
-					string progress = new string('*', 10 * (dimmer.Max - Temperature) / (dimmer.Max - dimmer.Min));
-					progress = string.Format("[{2}|{0}{1}|{3}]", progress, new string(' ', 10 - progress.Length), dimmer.Min, dimmer.Max);
+					string progress = new string('*', 10 * (Thermostat.Max - Temperature) / (Thermostat.Max - Thermostat.Min));
+					progress = string.Format("[{2}|{0}{1}|{3}]", progress, new string(' ', 10 - progress.Length), Thermostat.Min, Thermostat.Max);
 
 					res = string.Format("{0}жужжит {1} {2}C", res, progress, Temperature);
 					break;

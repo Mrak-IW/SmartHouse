@@ -20,9 +20,17 @@ namespace HomeWorkSmartHouse
 			sh.AddDevice(new SmartLamp("l2", new Dimmer(100, 10, 15)));
 			sh.AddDevice(new Fridge("fr", new Dimmer(0, -5, 1)));
 			sh.AddDevice(new Clock("clk"));
+			
 			sh["fr"].On();
 			sh["clk"].On();
 			(sh["fr"] as IHaveThermostat).DecreaseTemperature();
+
+			SmartLamp testDev = SmartDeviceCreator.CreateDevice("SmartLamp", "fr2") as SmartLamp;
+			testDev.BrightnessMax = 10;
+			testDev.BrightnessMin = -10;
+			testDev.Step = 10;
+			testDev.On();
+			sh.AddDevice(testDev);
 
 			CommandMenu cm = new CommandMenu(sh);
 			IMenu add = new MenuAdd();

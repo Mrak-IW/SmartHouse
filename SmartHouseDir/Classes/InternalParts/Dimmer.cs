@@ -9,9 +9,12 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 	public class Dimmer : IAdjustable<int>
 	{
 		private int currentLevel;
-		private readonly int min;
-		private readonly int max;
-		private readonly int step;
+		private int min;
+		private int max;
+		private int step;
+
+		public Dimmer()
+		{ }
 
 		public Dimmer(int max, int min, int step)
 		{
@@ -50,12 +53,31 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 			{
 				return max;
 			}
+
+			set
+			{
+				if (value < Min)
+				{
+					Min = value;
+				}
+				max = value;
+			}
 		}
+
 		public virtual int Min
 		{
 			get
 			{
 				return min;
+			}
+
+			set
+			{
+				if (value > Max)
+				{
+					Max = value;
+				}
+				min = value;
 			}
 		}
 
@@ -63,7 +85,23 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 		{
 			get
 			{
+				if (step > max - min)
+				{
+					step = max - min;
+				}
 				return step;
+			}
+
+			set
+			{
+				if (value <= max - min)
+				{
+					step = value;
+				}
+				else
+				{
+					step = max - min;
+				}
 			}
 		}
 

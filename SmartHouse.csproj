@@ -68,6 +68,7 @@
     <Compile Include="Menus\Interfaces\IMenu.cs" />
     <Compile Include="Menus\Classes\CommandMenu.cs" />
     <Compile Include="SmartHouseDir\Classes\InternalParts\Dimmer.cs" />
+    <Compile Include="SmartHouseDir\Classes\SmartDeviceCreator.cs" />
     <Compile Include="SmartHouseDir\Enums\EPowerState.cs" />
     <Compile Include="SmartHouseDir\Interfaces\IAdjustable.cs" />
     <Compile Include="SmartHouseDir\Interfaces\ISmartDevice.cs" />
