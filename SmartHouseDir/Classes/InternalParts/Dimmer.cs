@@ -40,7 +40,15 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 			}
 			set
 			{
-				if (value >= Min && value <= Max)
+				if (value < Min)
+				{
+					currentLevel = Min;
+				}
+				else if (value > Max)
+				{
+					currentLevel = Max;
+				}
+				else
 				{
 					currentLevel = value;
 				}
@@ -61,6 +69,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 					Min = value;
 				}
 				max = value;
+				CurrentLevel = CurrentLevel;
 			}
 		}
 
@@ -78,6 +87,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 					Max = value;
 				}
 				min = value;
+				CurrentLevel = CurrentLevel;
 			}
 		}
 
@@ -109,6 +119,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 		{
 			CurrentLevel -= step;
 		}
+
 		public virtual void Increase()
 		{
 			CurrentLevel += step;

@@ -11,7 +11,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Interfaces
 		int Brightness { get; set; }
 		int BrightnessMax { get; set; }
 		int BrightnessMin { get; set; }
-		int Step { get; set; }
+		int BrightnessStep { get; set; }
 
 		void IncreaseBrightness();
 		void DecreaseBrightness();

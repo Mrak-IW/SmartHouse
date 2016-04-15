@@ -11,7 +11,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Interfaces
 		int Temperature { get; set; }
 		int TempMax { get; set; }
 		int TempMin { get; set; }
-		int Step { get; set; }
+		int TempStep { get; set; }
 
 		void IncreaseTemperature();
 		void DecreaseTemperature();

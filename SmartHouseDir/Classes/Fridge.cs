@@ -113,7 +113,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
-		public int Step
+		public int TempStep
 		{
 			get
 			{

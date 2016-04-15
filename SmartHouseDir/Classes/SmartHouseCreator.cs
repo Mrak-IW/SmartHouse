@@ -7,17 +7,47 @@ using System.Text;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 {
-	public abstract class SmartDeviceCreator
+	public class SmartHouseCreator : ISmartHouseCreator
 	{
-		public static ISmartDevice CreateDevice(string typename, string deviceName)
+		public Assembly SmartHouseAssembly { get; set; }
+
+		public SmartHouseCreator(Assembly smartHouseAssembly)
 		{
-			Type thisType = typeof(SmartDeviceCreator);
-			string thisNamespace = string.Concat(thisType.Namespace, ".");
+			this.SmartHouseAssembly = smartHouseAssembly;
+		}
 
+		public ISmartHouse CreateSmartHouse()
+		{
+			ISmartHouse sh = null;
+
+			var res = from t in SmartHouseAssembly.GetTypes()
+					  where t.GetInterfaces().Contains(typeof(ISmartHouse))
+					  select t;
+
+			Type shType = res.FirstOrDefault();
+
+			if (shType != null)
+			{
+				sh = Activator.CreateInstance(shType) as ISmartHouse;
+			}
+
+			return sh;
+		}
+
+		public ISmartDevice CreateDevice(string typename, string deviceName)
+		{
 			ISmartDevice dev = null;
-			Assembly a = thisType.Assembly;
 
-			Type devType = a.GetType(string.Concat(thisNamespace, typename));
+			Type devType = null;
+
+			foreach (Type t in SmartHouseAssembly.GetTypes())
+			{
+				if (t.Name == typename)
+				{
+					devType = t;
+					break;
+				}
+			}
 
 			if (devType != null)
 			{
@@ -36,7 +66,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 						Type dimmerIface = typeof(IAdjustable<int>);
 						Type dimmerType = null;
 
-						foreach (Type t in a.GetTypes())
+						foreach (Type t in SmartHouseAssembly.GetTypes())
 						{
 							if (t.GetInterfaces().Contains(dimmerIface))
 							{
@@ -44,7 +74,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 								break;
 							}
 						}
-						
+
 						if (dimmerType == null)
 						{
 							throw new Exception("В сборке отстутствует класс, который можно использовать в качестве диммера.");
@@ -66,7 +96,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 						Type thermostatIface = typeof(IAdjustable<int>);
 						Type thermostatType = null;
 
-						foreach (Type t in a.GetTypes())
+						foreach (Type t in SmartHouseAssembly.GetTypes())
 						{
 							if (t.GetInterfaces().Contains(thermostatIface))
 							{

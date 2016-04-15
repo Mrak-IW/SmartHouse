@@ -68,7 +68,7 @@
     <Compile Include="Menus\Interfaces\IMenu.cs" />
     <Compile Include="Menus\Classes\CommandMenu.cs" />
     <Compile Include="SmartHouseDir\Classes\InternalParts\Dimmer.cs" />
-    <Compile Include="SmartHouseDir\Classes\SmartDeviceCreator.cs" />
+    <Compile Include="SmartHouseDir\Classes\SmartHouseCreator.cs" />
     <Compile Include="SmartHouseDir\Enums\EPowerState.cs" />
     <Compile Include="SmartHouseDir\Interfaces\IAdjustable.cs" />
     <Compile Include="SmartHouseDir\Interfaces\ISmartDevice.cs" />
@@ -84,6 +84,7 @@
     <Compile Include="SmartHouseDir\Abstracts\SmartDevice.cs" />
     <Compile Include="SmartHouseDir\Classes\SmartHouse.cs" />
     <Compile Include="SmartHouseDir\Classes\SmartLamp.cs" />
+    <Compile Include="SmartHouseDir\Interfaces\ISmartHouseCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
