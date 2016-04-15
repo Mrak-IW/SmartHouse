@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1BD48987-751A-4CD3-B74E-B5423528B8C8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HomeWorkSmartHouse</RootNamespace>
+    <AssemblyName>SmartHouse</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExtensionClasses\ExtString.cs" />
+    <Compile Include="Menus\Classes\MenuAddClock.cs" />
+    <Compile Include="SmartHouseDir\Classes\Clock.cs" />
+    <Compile Include="Menus\Classes\MenuRepare.cs" />
+    <Compile Include="Menus\Classes\MenuTemperatureSet.cs" />
+    <Compile Include="Menus\Classes\MenuAddFridge.cs" />
+    <Compile Include="Menus\Classes\MenuClose.cs" />
+    <Compile Include="Menus\Classes\MenuTemperatureDecrease.cs" />
+    <Compile Include="Menus\Classes\MenuOpen.cs" />
+    <Compile Include="Menus\Classes\MenuTemperature.cs" />
+    <Compile Include="Menus\Classes\MenuTemperatureIncrease.cs" />
+    <Compile Include="SmartHouseDir\Classes\Fridge.cs" />
+    <Compile Include="Menus\Classes\MenuBrightnessDecrease.cs" />
+    <Compile Include="Menus\Classes\MenuBrightnessIncrease.cs" />
+    <Compile Include="Menus\Classes\MenuBrightnessSet.cs" />
+    <Compile Include="Menus\Classes\MenuBrightness.cs" />
+    <Compile Include="Menus\Classes\MenuBreak.cs" />
+    <Compile Include="Menus\Classes\MenuOff.cs" />
+    <Compile Include="Menus\Classes\MenuOn.cs" />
+    <Compile Include="Menus\Classes\MenuAddLamp.cs" />
+    <Compile Include="Menus\Abstracts\Menu.cs" />
+    <Compile Include="Menus\Classes\MenuAdd.cs" />
+    <Compile Include="Menus\Interfaces\IMenu.cs" />
+    <Compile Include="Menus\Classes\CommandMenu.cs" />
+    <Compile Include="SmartHouseDir\Classes\InternalParts\Dimmer.cs" />
+    <Compile Include="SmartHouseDir\Enums\EPowerState.cs" />
+    <Compile Include="SmartHouseDir\Interfaces\IAdjustable.cs" />
+    <Compile Include="SmartHouseDir\Interfaces\ISmartDevice.cs" />
+    <Compile Include="SmartHouseDir\Interfaces\IHaveThermostat.cs" />
+    <Compile Include="SmartHouseDir\Interfaces\IHaveClock.cs" />
+    <Compile Include="SmartHouseDir\Interfaces\IBrightable.cs" />
+    <Compile Include="SmartHouseDir\Interfaces\IOpenCloseable.cs" />
+    <Compile Include="SmartHouseDir\Interfaces\IRepearable.cs" />
+    <Compile Include="SmartHouseDir\Interfaces\ISmartHouse.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Menus\Classes\MenuRemove.cs" />
+    <Compile Include="SmartHouseDir\Abstracts\SmartDevice.cs" />
+    <Compile Include="SmartHouseDir\Classes\SmartHouse.cs" />
+    <Compile Include="SmartHouseDir\Classes\SmartLamp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Diagrams\SmartHouse.cd" />
+    <None Include="Diagrams\Menu.cd" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

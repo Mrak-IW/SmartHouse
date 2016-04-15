@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Comment CommentText="Простые команды с одним параметром">
+    <Position X="3.27" Y="5.534" Height="0.51" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Семейство команд добавления">
+    <Position X="0.777" Y="5.533" Height="0.51" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Семейство команд управления яркостью">
+    <Position X="5.735" Y="5.531" Height="0.51" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Семейство команд управления температурой">
+    <Position X="8.225" Y="5.518" Height="0.51" Width="1.796" />
+  </Comment>
+  <Class Name="HomeWork2.Menus.Classes.CommandMenu">
+    <Position X="7" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAgAAAAIAAAAAQAAAAEAIAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\CommandMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuAdd">
+    <Position X="0.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuAdd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuAddLamp">
+    <Position X="0.75" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuAddLamp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuRemove">
+    <Position X="3.25" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuRemove.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuOn">
+    <Position X="3.25" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuOn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuOff">
+    <Position X="3.25" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuOff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuBreak">
+    <Position X="3.25" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuBreak.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuBrightness">
+    <Position X="5.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuBrightness.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuBrightnessIncrease">
+    <Position X="5.75" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuBrightnessIncrease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuBrightnessSet">
+    <Position X="5.75" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuBrightnessSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuBrightnessDecrease">
+    <Position X="5.75" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuBrightnessDecrease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuAddFridge">
+    <Position X="0.75" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuAddFridge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuTemperature">
+    <Position X="8.25" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuTemperature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuOpen">
+    <Position X="3.25" Y="20.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuOpen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuClose">
+    <Position X="3.25" Y="24" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuClose.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuTemperatureIncrease">
+    <Position X="8.25" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuTemperatureIncrease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuTemperatureDecrease">
+    <Position X="8.25" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuTemperatureDecrease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuTemperatureSet">
+    <Position X="8.25" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuTemperatureSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuRepare">
+    <Position X="3.25" Y="27.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuRepare.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Classes.MenuAddClock">
+    <Position X="0.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAIAAAAAQAAAAEAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Menus\Classes\MenuAddClock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeWork2.Menus.Abstracts.Menu">
+    <Position X="4.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAQAAAgCJAECAAAyAQAARAAAAAEAAACQAAgAAA=</HashCode>
+      <FileName>Menus\Abstracts\Menu.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="HomeWork2.Menus.Interfaces.IMenu">
+    <Position X="2" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAIAACAAAQAQAARAAAAAAAAAAQAAgAAA=</HashCode>
+      <FileName>Menus\Interfaces\IMenu.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
