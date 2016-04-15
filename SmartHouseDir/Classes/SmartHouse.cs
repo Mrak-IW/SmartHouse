@@ -7,7 +7,7 @@ using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 {
-	public class SmartHouse : ISmartHouse, IEnumerable<ISmartDevice>
+	public class SmartHouse : ISmartHouse
 	{
 		private SortedList<string, ISmartDevice> devices;
 

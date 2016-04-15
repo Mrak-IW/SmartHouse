@@ -2,7 +2,7 @@
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Interfaces
 {
-	public interface ISmartHouse
+	public interface ISmartHouse: IEnumerable<ISmartDevice>
 	{
 		ISmartDevice this[string name] { get; }
 		ISmartDevice this[int index] { get; }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Interfaces
 {
-	interface ISmartHouseCreator
+	public interface ISmartHouseCreator
 	{
 		ISmartDevice CreateDevice(string typename, string deviceName);
 		ISmartHouse CreateSmartHouse();
