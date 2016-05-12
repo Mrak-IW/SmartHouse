@@ -7,6 +7,7 @@ using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 {
+	[Serializable]
 	public class SmartHouse : ISmartHouse
 	{
 		private SortedList<string, ISmartDevice> devices;

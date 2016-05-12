@@ -6,6 +6,7 @@ using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 {
+	[Serializable]
 	public class Dimmer : IAdjustable<int>
 	{
 		private int currentLevel;

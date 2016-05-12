@@ -8,6 +8,7 @@ using HomeWorkSmartHouse.SmartHouseDir.Enums;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 {
+	[Serializable]
 	public class SmartLamp : SmartDevice, IBrightable
 	{
 		const string devType = "лампа";

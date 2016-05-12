@@ -8,6 +8,7 @@ using HomeWorkSmartHouse.SmartHouseDir.Enums;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 {
+	[Serializable]
 	public class Fridge : SmartDevice, IHaveThermostat, IOpenCloseable, IRepareable
 	{
 		const string devType = "холодильник";

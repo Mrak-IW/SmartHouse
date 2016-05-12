@@ -7,6 +7,7 @@ using HomeWorkSmartHouse.SmartHouseDir.Enums;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Abstracts
 {
+	[Serializable]
 	public abstract class SmartDevice : ISmartDevice
 	{
 		private string name;

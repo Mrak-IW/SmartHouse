@@ -8,6 +8,7 @@ using HomeWorkSmartHouse.SmartHouseDir.Enums;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 {
+	[Serializable]
 	public class Clock : SmartDevice, IHaveClock
 	{
 		const string devType = "часы";
