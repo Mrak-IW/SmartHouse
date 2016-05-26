@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,11 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 	{
 		const string devType = "часы";
 
+		public Clock() : base(null) { }
+
 		public Clock(string name) : base(name) { }
 
+		[NotMapped]
 		public override string DeviceType
 		{
 			get
@@ -23,6 +27,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		[NotMapped]
 		public virtual DateTime Time
 		{
 			get

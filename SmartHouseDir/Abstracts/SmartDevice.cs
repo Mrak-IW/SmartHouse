@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,18 +16,24 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Abstracts
 		private EPowerState state;
 		private ISmartHouse parent;
 
+		public SmartDevice()
+		{
+			this.Name = null;
+		}
+
 		public SmartDevice(string name)
 		{
 			this.Name = name;
 		}
 
+		[Key]
 		public virtual string Name
 		{
 			get
 			{
 				return name;
 			}
-			protected set
+			set
 			{
 				name = value;
 			}
@@ -57,6 +65,9 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Abstracts
 			}
 		}
 
+		[NotMapped]
+		public abstract string DeviceType { get; }
+
 		public virtual void Break()
 		{
 			State = EPowerState.Broken;
@@ -77,7 +88,5 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Abstracts
 				State = EPowerState.On;
 			}
 		}
-
-		public abstract string DeviceType { get; }
 	}
 }

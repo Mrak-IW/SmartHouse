@@ -98,9 +98,9 @@ namespace HomeWorkSmartHouse.Menus.Classes
 		{
 			Console.Clear();
 			Console.WriteLine("Устройств в системе {0}:", sh.Count);
-			for (int i = 0; i < sh.Count; i++)
+			foreach(ISmartDevice dev in sh)
 			{
-				Console.WriteLine(sh[i]);
+				Console.WriteLine(dev);
 			}
 			Console.WriteLine();
 		}

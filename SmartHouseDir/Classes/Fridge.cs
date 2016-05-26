@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 	{
 		const string devType = "холодильник";
 		private IAdjustable<int> thermostat;
+
+		public Fridge() : base(null) { }
 
 		public Fridge(string name)
 			: base(name)
@@ -43,6 +46,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		[NotMapped]
 		public override string DeviceType
 		{
 			get
@@ -53,6 +57,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 
 		public virtual bool IsOpened { get; set; }
 
+		[NotMapped]
 		public virtual int Temperature
 		{
 			get
@@ -66,6 +71,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		[NotMapped]
 		public virtual int TempMax
 		{
 			get
@@ -90,6 +96,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		[NotMapped]
 		public virtual int TempMin
 		{
 			get
@@ -114,6 +121,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		[NotMapped]
 		public int TempStep
 		{
 			get

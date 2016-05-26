@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		const string devType = "лампа";
 
 		private IAdjustable<int> dimmer;
+
+		public SmartLamp() : base(null) { }
 
 		public SmartLamp(string name)
 			: base(name)
@@ -44,6 +47,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		[NotMapped]
 		public override string DeviceType
 		{
 			get
@@ -52,6 +56,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		[NotMapped]
 		public virtual int BrightnessMax
 		{
 			get
@@ -72,6 +77,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		[NotMapped]
 		public virtual int BrightnessMin
 		{
 			get
@@ -92,6 +98,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		[NotMapped]
 		public virtual int Brightness
 		{
 			get
@@ -105,6 +112,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		[NotMapped]
 		public int BrightnessStep
 		{
 			get

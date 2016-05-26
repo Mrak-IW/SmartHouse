@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using HomeWorkSmartHouse.SmartHouseDir.Enums;
+
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Interfaces
 {
 	public interface ISmartDevice
 	{
-		string Name { get; }
+		[Key]
+		string Name { get; set; }
+		[NotMapped]
 		string DeviceType { get; }
 		EPowerState State { get; set; }
 		ISmartHouse Parent { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,28 +9,17 @@ using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 {
 	[Serializable]
-	public class SmartHouse : ISmartHouse
+	public class SmartHouse : DbContext, ISmartHouse
 	{
-		private SortedList<string, ISmartDevice> devices;
+		public DbSet<ISmartDevice> Devices { get; set; }
 
-		public SmartHouse()
-		{
-			devices = new SortedList<string, ISmartDevice>();
-		}
+		public SmartHouse() { }
 
 		public virtual int Count
 		{
 			get
 			{
-				return devices.Count;
-			}
-		}
-
-		public ISmartDevice this[int index]
-		{
-			get
-			{
-				return devices.Values[index];
+				return Devices.Count();
 			}
 		}
 
@@ -37,14 +27,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			get
 			{
-				if (devices.ContainsKey(name))
-				{
-					return devices[name];
-				}
-				else
-				{
-					return null;
-				}
+				return Devices.Find(name);
 			}
 		}
 
@@ -56,7 +39,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			{
 				if (this[device.Name] == null)
 				{
-					devices.Add(device.Name, device);
+					Devices.Add(device);
 					device.Parent = this;
 				}
 				else
@@ -70,17 +53,18 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 
 		public virtual void RemoveDevice(string name)
 		{
-			devices.Remove(name);
+			ISmartDevice dev = Devices.Find(name);
+			Devices.Remove(dev);
 		}
 
 		public IEnumerator<ISmartDevice> GetEnumerator()
 		{
-			return devices.Values.GetEnumerator();
+			return Devices.ToList().GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return devices.Values.GetEnumerator();
+			return Devices.ToList().GetEnumerator();
 		}
 	}
 }
