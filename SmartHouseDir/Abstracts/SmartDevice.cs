@@ -10,7 +10,7 @@ using HomeWorkSmartHouse.SmartHouseDir.Enums;
 namespace HomeWorkSmartHouse.SmartHouseDir.Abstracts
 {
 	[Serializable]
-	public abstract class SmartDevice : ISmartDevice
+	public abstract class SmartDevice : ISmartDevice, IDbItem
 	{
 		private string name;
 		private EPowerState state;
@@ -26,7 +26,8 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Abstracts
 			this.Name = name;
 		}
 
-		[Key]
+		public int Id { get; set; }
+
 		public virtual string Name
 		{
 			get

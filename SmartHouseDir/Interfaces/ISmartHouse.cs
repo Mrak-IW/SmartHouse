@@ -5,6 +5,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Interfaces
 	public interface ISmartHouse: IEnumerable<ISmartDevice>
 	{
 		ISmartDevice this[string name] { get; }
+		ISmartDevice this[int Id] { get; }
 
 		int Count { get; }
 

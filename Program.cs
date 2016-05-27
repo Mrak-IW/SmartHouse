@@ -18,6 +18,8 @@ namespace HomeWorkSmartHouse
 
 		static void Main(string[] args)
 		{
+			AppDomain.CurrentDomain.SetData("DataDirectory", AppDomain.CurrentDomain.BaseDirectory);
+
 			Assembly a = Assembly.Load("SmartHouse");
 			ISmartHouseCreator shc = GetManufacture(a);
 			ISmartDevice dev;

@@ -80,6 +80,7 @@
     <Compile Include="SmartHouseDir\Classes\SmartHouseCreator.cs" />
     <Compile Include="SmartHouseDir\Enums\EPowerState.cs" />
     <Compile Include="SmartHouseDir\Interfaces\IAdjustable.cs" />
+    <Compile Include="SmartHouseDir\Interfaces\IDbItem.cs" />
     <Compile Include="SmartHouseDir\Interfaces\ISmartDevice.cs" />
     <Compile Include="SmartHouseDir\Interfaces\IHaveThermostat.cs" />
     <Compile Include="SmartHouseDir\Interfaces\IHaveClock.cs" />
@@ -96,7 +97,9 @@
     <Compile Include="SmartHouseDir\Interfaces\ISmartHouseCreator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Diagrams\SmartHouse.cd" />
     <None Include="Diagrams\Menu.cd" />
     <None Include="packages.config" />

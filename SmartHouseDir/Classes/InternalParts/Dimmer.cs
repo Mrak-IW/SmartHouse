@@ -92,7 +92,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 			}
 		}
 
-		public int Step
+		public virtual int Step
 		{
 			get
 			{

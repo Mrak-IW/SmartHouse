@@ -11,9 +11,32 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 	[Serializable]
 	public class SmartHouse : DbContext, ISmartHouse
 	{
-		public DbSet<ISmartDevice> Devices { get; set; }
+		public DbSet<Fridge> Fridges { get; set; }
+		public DbSet<SmartLamp> Lamps { get; set; }
+		public DbSet<Clock> Clocks { get; set; }
 
 		public SmartHouse() { }
+
+		protected List<ISmartDevice> Devices
+		{
+			get
+			{
+				List<ISmartDevice> list = new List<ISmartDevice>();
+				foreach (ISmartDevice dev in Fridges)
+				{
+					list.Add(dev);
+				}
+				foreach (ISmartDevice dev in Lamps)
+				{
+					list.Add(dev);
+				}
+				foreach (ISmartDevice dev in Clocks)
+				{
+					list.Add(dev);
+				}
+				return list;
+			}
+		}
 
 		public virtual int Count
 		{
@@ -23,11 +46,19 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		public ISmartDevice this[int Id]
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+		}
+
 		public virtual ISmartDevice this[string name]
 		{
 			get
 			{
-				return Devices.Find(name);
+				return Devices.Where(d => d.Name == name).FirstOrDefault();
 			}
 		}
 
@@ -39,7 +70,19 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			{
 				if (this[device.Name] == null)
 				{
-					Devices.Add(device);
+					//Devices.Add(device);
+					if (device is Fridge)
+					{
+						Fridges.Add(device as Fridge);
+					}
+					if (device is SmartLamp)
+					{
+						Lamps.Add(device as SmartLamp);
+					}
+					if (device is Clock)
+					{
+						Clocks.Add(device as Clock);
+					}
 					device.Parent = this;
 				}
 				else
@@ -53,7 +96,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 
 		public virtual void RemoveDevice(string name)
 		{
-			ISmartDevice dev = Devices.Find(name);
+			ISmartDevice dev = Devices.Where(d => d.Name == name).FirstOrDefault();
 			Devices.Remove(dev);
 		}
 
