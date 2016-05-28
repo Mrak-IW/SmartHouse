@@ -6,6 +6,7 @@ using System.Text;
 using HomeWorkSmartHouse.SmartHouseDir.Abstracts;
 using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
 using HomeWorkSmartHouse.SmartHouseDir.Enums;
+using HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 {
@@ -30,6 +31,22 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			this.Dimmer = dimmer;
 		}
 
+		public int? DimmerId { get; set; }
+
+		[ForeignKey("DimmerId")]
+		public virtual Dimmer EfDimmer
+		{
+			get
+			{
+				return Dimmer as Dimmer;
+			}
+			set
+			{
+				Dimmer = value;
+			}
+		}
+
+		[NotMapped]
 		public IAdjustable<int> Dimmer
 		{
 			get

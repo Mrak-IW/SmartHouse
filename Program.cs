@@ -9,6 +9,8 @@ using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using HomeWorkSmartHouse.SmartHouseDir.Classes;
+using System.Data.Entity;
 
 namespace HomeWorkSmartHouse
 {
@@ -20,103 +22,9 @@ namespace HomeWorkSmartHouse
 		{
 			AppDomain.CurrentDomain.SetData("DataDirectory", AppDomain.CurrentDomain.BaseDirectory);
 
-			Assembly a = Assembly.Load("SmartHouse");
-			ISmartHouseCreator shc = GetManufacture(a);
-			ISmartDevice dev;
-			IBrightable ibri;
-			IHaveThermostat iterm;
+			SmartHouse sh = new SmartHouse();
 
-			ISmartHouse sh = null;
-
-			string storageFile = null;
-			FileInfo storageFileInfo = null;
-
-			if (args.Length > 0)
-			{
-				storageFile = args[0];
-				try
-				{
-					storageFileInfo = new FileInfo(storageFile);
-				}
-				catch
-				{
-					storageFileInfo = null;
-				}
-			}
-
-			if (storageFileInfo == null)
-			{
-				storageFile = storageFileDefault;
-				storageFileInfo = new FileInfo(storageFile);
-			}
-
-			if (storageFileInfo.Exists)
-			{
-				using (FileStream fs = new FileStream(storageFile, FileMode.Open))
-				{
-					BinaryFormatter bf = new BinaryFormatter();
-					try
-					{
-						sh = bf.Deserialize(fs) as ISmartHouse;
-					}
-					catch
-					{
-						sh = null;
-					}
-				}
-			}
-
-			if (sh == null)
-			{
-				sh = shc.CreateSmartHouse();
-
-				dev = shc.CreateDevice("SmartLamp", "l1");
-
-				ibri = dev as IBrightable;
-				ibri.BrightnessMax = 100;
-				ibri.BrightnessMin = 10;
-				ibri.BrightnessStep = 10;
-				sh.AddDevice(dev);
-
-				dev = shc.CreateDevice("SmartLamp", "l2");
-
-				ibri = dev as IBrightable;
-				ibri.BrightnessMax = 100;
-				ibri.BrightnessMin = 10;
-				ibri.BrightnessStep = 15;
-				sh.AddDevice(dev);
-
-				dev = shc.CreateDevice("Fridge", "fr1");
-
-				iterm = dev as IHaveThermostat;
-				iterm.TempMax = 0;
-				iterm.TempMin = -5;
-				iterm.TempStep = 1;
-				dev.On();
-				iterm.DecreaseTemperature();
-				sh.AddDevice(dev);
-
-				dev = shc.CreateDevice("Clock", "clk1");
-
-				dev.On();
-				sh.AddDevice(dev);
-			}
-			//ISmartHouse sh = new SmartHouseDir.Classes.SmartHouse();
-			//sh.AddDevice(new SmartLamp("l1", new Dimmer(100, 10, 10)));
-			//sh.AddDevice(new SmartLamp("l2", new Dimmer(100, 10, 15)));
-			//sh.AddDevice(new Fridge("fr", new Dimmer(0, -5, 1)));
-			//sh.AddDevice(new Clock("clk"));
-
-			//sh["fr"].On();
-			//sh["clk"].On();
-			//(sh["fr"] as IHaveThermostat).DecreaseTemperature();
-
-			//SmartLamp testDev = shc.CreateDevice("SmartLamp", "fr2") as SmartLamp;
-			//testDev.BrightnessMax = 10;
-			//testDev.BrightnessMin = -10;
-			//testDev.Step = 10;
-			//testDev.On();
-			//sh.AddDevice(testDev);
+			IEnumerable<ISmartDevice> devs = sh.Devices;
 
 			CommandMenu cm = new CommandMenu(sh);
 			IMenu add = new MenuAdd();
@@ -148,14 +56,10 @@ namespace HomeWorkSmartHouse
 
 			cm.Show();
 
-			using (FileStream fs = new FileStream(storageFile, FileMode.Create))
-			{
-				BinaryFormatter bf = new BinaryFormatter();
-				bf.Serialize(fs, sh);
-			}
+			sh.SaveChanges();
 		}
 
-		static ISmartHouseCreator GetManufacture(Assembly smartHouseAssembly)
+		public static ISmartHouseCreator GetManufacture(Assembly smartHouseAssembly)
 		{
 			ISmartHouseCreator shc = null;
 			Type shcType = null;

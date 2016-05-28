@@ -5,19 +5,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
+using HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 {
-	[Serializable]
 	public class SmartHouse : DbContext, ISmartHouse
 	{
 		public DbSet<Fridge> Fridges { get; set; }
 		public DbSet<SmartLamp> Lamps { get; set; }
 		public DbSet<Clock> Clocks { get; set; }
+		public DbSet<Dimmer> Dimmers { get; set; }
+
+		static SmartHouse()
+		{
+			Database.SetInitializer<SmartHouse>(new SmartHouseDBInitializer());
+		}
 
 		public SmartHouse() { }
 
-		protected List<ISmartDevice> Devices
+		public List<ISmartDevice> Devices
 		{
 			get
 			{
@@ -73,10 +79,12 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 					//Devices.Add(device);
 					if (device is Fridge)
 					{
+						Dimmers.Add((device as Fridge).Thermostat as Dimmer);
 						Fridges.Add(device as Fridge);
 					}
 					if (device is SmartLamp)
 					{
+						Dimmers.Add((device as SmartLamp).Dimmer as Dimmer);
 						Lamps.Add(device as SmartLamp);
 					}
 					if (device is Clock)

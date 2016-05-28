@@ -7,7 +7,7 @@ using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 {
 	[Serializable]
-	public class Dimmer : IAdjustable<int>
+	public class Dimmer : IAdjustable<int>, IDbItem
 	{
 		private int currentLevel;
 		private int min;
@@ -32,6 +32,12 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 			this.step = step;
 			this.CurrentLevel = this.Max;
 		}
+
+		public int Id { get; set; }
+
+		public ICollection<Fridge> Fridges { get; set;}
+
+		public ICollection<SmartLamp> SmartLamps { get; set; }
 
 		public virtual int CurrentLevel
 		{
