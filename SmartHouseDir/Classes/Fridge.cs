@@ -30,7 +30,8 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			this.Thermostat = thermostat;
 		}
 
-		public int? DimmerId { get; set; }
+		[ForeignKey("Dimmer")]
+		public override int Id { get; set; }
 
 		public virtual Dimmer Dimmer
 		{

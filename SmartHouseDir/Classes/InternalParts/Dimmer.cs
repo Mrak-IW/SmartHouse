@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 {
@@ -35,10 +36,26 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 
 		public int Id { get; set; }
 
-		public ICollection<Fridge> Fridges { get; set;}
+		public Fridge Fridge { get; set; }
 
-		public ICollection<SmartLamp> SmartLamps { get; set; }
+		public SmartLamp SmartLamp { get; set; }
 
+		//Да, это костыль. Но я пытался прикрутить EntityFramework к уже готовой модели, минимально изменяя логику её работы.
+		//Если использовать свойство с проверкой значения, то значение из базы восстанавливается некорректно.
+		[Column("CurrentLevel")]
+		public virtual int CurrentLevelUnsafe
+		{
+			get
+			{
+				return CurrentLevel;
+			}
+			set
+			{
+				currentLevel = value;
+			}
+		}
+
+		[NotMapped]
 		public virtual int CurrentLevel
 		{
 			get
@@ -59,6 +76,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 				{
 					currentLevel = value;
 				}
+				currentLevel = value;
 			}
 		}
 

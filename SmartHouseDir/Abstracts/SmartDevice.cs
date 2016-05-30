@@ -26,7 +26,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Abstracts
 			this.Name = name;
 		}
 
-		public int Id { get; set; }
+		public virtual int Id { get; set; }
 
 		public virtual string Name
 		{

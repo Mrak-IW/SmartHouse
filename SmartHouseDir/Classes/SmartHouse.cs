@@ -28,11 +28,13 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			get
 			{
 				List<ISmartDevice> list = new List<ISmartDevice>();
-				foreach (ISmartDevice dev in Fridges)
+				var frList = Fridges.Include(d => d.Dimmer);
+				foreach (ISmartDevice dev in frList)
 				{
 					list.Add(dev);
 				}
-				foreach (ISmartDevice dev in Lamps)
+				var lpList = Lamps.Include(d => d.Dimmer);
+				foreach (ISmartDevice dev in lpList)
 				{
 					list.Add(dev);
 				}
@@ -84,7 +86,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 					}
 					if (device is SmartLamp)
 					{
-						Dimmers.Add((device as SmartLamp).Dimmer as Dimmer);
+						Dimmers.Add((device as SmartLamp).Regulator as Dimmer);
 						Lamps.Add(device as SmartLamp);
 					}
 					if (device is Clock)
@@ -92,6 +94,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 						Clocks.Add(device as Clock);
 					}
 					device.Parent = this;
+					SaveChanges();
 				}
 				else
 				{
@@ -105,7 +108,25 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		public virtual void RemoveDevice(string name)
 		{
 			ISmartDevice dev = Devices.Where(d => d.Name == name).FirstOrDefault();
-			Devices.Remove(dev);
+			if (dev is Fridge)
+			{
+				var d = Fridges.Find((dev as IDbItem).Id);
+				Fridges.Remove(d);
+			}
+
+			if (dev is SmartLamp)
+			{
+				var d = Lamps.Find((dev as IDbItem).Id);
+				Lamps.Remove(d);
+			}
+
+			if (dev is Clock)
+			{
+				var d = Clocks.Find((dev as IDbItem).Id);
+				Clocks.Remove(d);
+			}
+
+			SaveChanges();
 		}
 
 		public IEnumerator<ISmartDevice> GetEnumerator()
