@@ -110,20 +110,24 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			ISmartDevice dev = Devices.Where(d => d.Name == name).FirstOrDefault();
 			if (dev is Fridge)
 			{
-				var d = Fridges.Find((dev as IDbItem).Id);
-				Fridges.Remove(d);
+				var device = Fridges.Find((dev as IDbItem).Id);
+				var dimmer = Dimmers.Find(device.Dimmer.Id);
+				Dimmers.Remove(dimmer);
+				Fridges.Remove(device);
 			}
 
 			if (dev is SmartLamp)
 			{
-				var d = Lamps.Find((dev as IDbItem).Id);
-				Lamps.Remove(d);
+				var device = Lamps.Find((dev as IDbItem).Id);
+				var dimmer = Dimmers.Find(device.Dimmer.Id);
+				Dimmers.Remove(dimmer);
+				Lamps.Remove(device);
 			}
 
 			if (dev is Clock)
 			{
-				var d = Clocks.Find((dev as IDbItem).Id);
-				Clocks.Remove(d);
+				var device = Clocks.Find((dev as IDbItem).Id);
+				Clocks.Remove(device);
 			}
 
 			SaveChanges();
