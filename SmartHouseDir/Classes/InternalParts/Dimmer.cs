@@ -76,7 +76,6 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 				{
 					currentLevel = value;
 				}
-				currentLevel = value;
 			}
 		}
 
@@ -142,12 +141,12 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 
 		public virtual void Decrease()
 		{
-			CurrentLevel -= step;
+			CurrentLevel -= Step;
 		}
 
 		public virtual void Increase()
 		{
-			CurrentLevel += step;
+			CurrentLevel += Step;
 		}
 	}
 
