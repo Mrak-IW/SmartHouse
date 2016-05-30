@@ -14,6 +14,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 	public class Fridge : SmartDevice, IHaveThermostat, IOpenCloseable, IRepareable
 	{
 		const string devType = "холодильник";
+
 		private IAdjustable<int> thermostat;
 
 		public Fridge() : base(null) { }
@@ -69,6 +70,15 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			get
 			{
 				return devType;
+			}
+		}
+
+		[NotMapped]
+		public override string DeviceTypeSystem
+		{
+			get
+			{
+				return typeof(Fridge).Name;
 			}
 		}
 

@@ -25,6 +25,15 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		}
 
 		[NotMapped]
+		public override string DeviceTypeSystem
+		{
+			get
+			{
+				return typeof(Clock).Name;
+			}
+		}
+
+		[NotMapped]
 		public virtual DateTime Time
 		{
 			get

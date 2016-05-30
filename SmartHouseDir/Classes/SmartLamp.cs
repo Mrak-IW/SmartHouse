@@ -74,6 +74,15 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		}
 
 		[NotMapped]
+		public override string DeviceTypeSystem
+		{
+			get
+			{
+				return typeof(SmartLamp).Name;
+			}
+		}
+
+		[NotMapped]
 		public virtual int BrightnessMax
 		{
 			get

@@ -6,6 +6,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Interfaces
 	{
 		string Name { get; set; }
 		string DeviceType { get; }
+		string DeviceTypeSystem { get; }	
 		EPowerState State { get; set; }
 		ISmartHouse Parent { get; set; }
 

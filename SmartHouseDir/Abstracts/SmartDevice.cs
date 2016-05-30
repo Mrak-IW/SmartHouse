@@ -68,6 +68,8 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Abstracts
 
 		[NotMapped]
 		public abstract string DeviceType { get; }
+		[NotMapped]
+		public abstract string DeviceTypeSystem { get; }
 
 		public virtual void Break()
 		{
