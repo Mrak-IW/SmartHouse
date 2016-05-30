@@ -40,8 +40,9 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 
 		public SmartLamp SmartLamp { get; set; }
 
-		//Да, это костыль. Но я пытался прикрутить EntityFramework к уже готовой модели, минимально изменяя логику её работы.
-		//Если использовать свойство с проверкой значения, то значение из базы восстанавливается некорректно.
+		// Да, это костыли. Но я пытался прикрутить EntityFramework к уже готовой модели, минимально изменяя логику её работы.
+		// Если использовать свойства с такой проверкой значения, которая зависит от значения других свойств,
+		// то значение из базы восстанавливается некорректно.
 		[Column("CurrentLevel")]
 		public virtual int CurrentLevelUnsafe
 		{
@@ -52,6 +53,45 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 			set
 			{
 				currentLevel = value;
+			}
+		}
+
+		[Column("Min")]
+		public virtual int MinUnsafe
+		{
+			get
+			{
+				return min;
+			}
+			set
+			{
+				min = value;
+			}
+		}
+
+		[Column("Max")]
+		public virtual int MaxUnsafe
+		{
+			get
+			{
+				return max;
+			}
+			set
+			{
+				max = value;
+			}
+		}
+
+		[Column("Step")]
+		public virtual int StepUnsafe
+		{
+			get
+			{
+				return step;
+			}
+			set
+			{
+				step = value;
 			}
 		}
 
@@ -79,6 +119,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 			}
 		}
 
+		[NotMapped]
 		public virtual int Max
 		{
 			get
@@ -97,6 +138,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 			}
 		}
 
+		[NotMapped]
 		public virtual int Min
 		{
 			get
@@ -115,6 +157,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 			}
 		}
 
+		[NotMapped]
 		public virtual int Step
 		{
 			get
