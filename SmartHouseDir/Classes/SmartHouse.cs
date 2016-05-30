@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
 using HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts;
 
@@ -23,7 +22,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 
 		public SmartHouse() { }
 
-		public List<ISmartDevice> Devices
+		public IList<ISmartDevice> Devices
 		{
 			get
 			{

@@ -6,6 +6,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Interfaces
 	{
 		ISmartDevice this[string name] { get; }
 		ISmartDevice this[int Id] { get; }
+		IList<ISmartDevice> Devices { get; }
 
 		int Count { get; }
 

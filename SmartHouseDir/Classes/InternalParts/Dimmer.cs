@@ -47,7 +47,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes.InternalParts
 		{
 			get
 			{
-				return CurrentLevel;
+				return currentLevel;
 			}
 			set
 			{

@@ -123,5 +123,24 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 
 			return dev;
 		}
+
+		public Type GetTypeByName(string name)
+		{
+			var res = from t in SmartHouseAssembly.GetTypes()
+					  where t.Name==name
+					  select t;
+			return res.FirstOrDefault();
+		}
+
+		public Type SmartHouseType
+		{
+			get
+			{
+				var res = from t in SmartHouseAssembly.GetTypes()
+						  where t.GetInterfaces().Contains(typeof(ISmartHouse))
+						  select t;
+				return res.FirstOrDefault();
+			}
+		}
 	}
 }

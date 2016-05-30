@@ -9,7 +9,6 @@ using HomeWorkSmartHouse.SmartHouseDir.Interfaces;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using HomeWorkSmartHouse.SmartHouseDir.Classes;
 using System.Data.Entity;
 
 namespace HomeWorkSmartHouse
@@ -22,9 +21,9 @@ namespace HomeWorkSmartHouse
 		{
 			AppDomain.CurrentDomain.SetData("DataDirectory", AppDomain.CurrentDomain.BaseDirectory);
 
-			SmartHouse sh = new SmartHouse();
+			ISmartHouseCreator shc = GetManufacture(Assembly.GetExecutingAssembly());
 
-			IEnumerable<ISmartDevice> devs = sh.Devices;
+			ISmartHouse sh = shc.CreateSmartHouse();
 
 			CommandMenu cm = new CommandMenu(sh);
 			IMenu add = new MenuAdd();
@@ -56,7 +55,7 @@ namespace HomeWorkSmartHouse
 
 			cm.Show();
 
-			sh.SaveChanges();
+			(sh as DbContext).SaveChanges();
 		}
 
 		public static ISmartHouseCreator GetManufacture(Assembly smartHouseAssembly)
