@@ -56,7 +56,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			get
 			{
-				return typeof(Fridge).Name;
+				return typeof(SmartLamp).Name;
 			}
 		}
 
