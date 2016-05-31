@@ -86,7 +86,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 							throw new Exception(string.Format("Не удалось создать диммер класса \"{0}\"", dimmerType.Name));
 						}
 
-						currentDev.Dimmer = dimmer;
+						currentDev.Regulator = dimmer;
 					}
 
 					if (dev is IHaveThermostat)
@@ -122,6 +122,25 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 
 			return dev;
+		}
+
+		public Type GetTypeByName(string name)
+		{
+			var res = from t in SmartHouseAssembly.GetTypes()
+					  where t.Name==name
+					  select t;
+			return res.FirstOrDefault();
+		}
+
+		public Type SmartHouseType
+		{
+			get
+			{
+				var res = from t in SmartHouseAssembly.GetTypes()
+						  where t.GetInterfaces().Contains(typeof(ISmartHouse))
+						  select t;
+				return res.FirstOrDefault();
+			}
 		}
 	}
 }

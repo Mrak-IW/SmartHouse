@@ -25,7 +25,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Abstracts
 			{
 				return name;
 			}
-			protected set
+			set
 			{
 				name = value;
 			}
@@ -79,5 +79,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Abstracts
 		}
 
 		public abstract string DeviceType { get; }
+
+		public abstract string DeviceTypeSystem { get; }
 	}
 }

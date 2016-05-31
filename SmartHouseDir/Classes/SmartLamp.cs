@@ -18,16 +18,16 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		public SmartLamp(string name)
 			: base(name)
 		{
-			this.Dimmer = null;
+			this.Regulator = null;
 		}
 
 		public SmartLamp(string name, IAdjustable<int> dimmer)
 			: base(name)
 		{
-			this.Dimmer = dimmer;
+			this.Regulator = dimmer;
 		}
 
-		public IAdjustable<int> Dimmer
+		public IAdjustable<int> Regulator
 		{
 			get
 			{
@@ -52,22 +52,30 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		public override string DeviceTypeSystem
+		{
+			get
+			{
+				return typeof(Fridge).Name;
+			}
+		}
+
 		public virtual int BrightnessMax
 		{
 			get
 			{
-				return Dimmer.Max;
+				return Regulator.Max;
 			}
 
 			set
 			{
 				if (value >= 0)
 				{
-					Dimmer.Max = value;
+					Regulator.Max = value;
 				}
 				else
 				{
-					Dimmer.Max = 0;
+					Regulator.Max = 0;
 				}
 			}
 		}
@@ -76,18 +84,18 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			get
 			{
-				return Dimmer.Min;
+				return Regulator.Min;
 			}
 
 			set
 			{
 				if (value >= 0)
 				{
-					Dimmer.Min = value;
+					Regulator.Min = value;
 				}
 				else
 				{
-					Dimmer.Min = 0;
+					Regulator.Min = 0;
 				}
 			}
 		}
@@ -96,12 +104,12 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			get
 			{
-				return State == EPowerState.On ? Dimmer.CurrentLevel : 0;
+				return State == EPowerState.On ? Regulator.CurrentLevel : 0;
 			}
 
 			set
 			{
-				Dimmer.CurrentLevel = value;
+				Regulator.CurrentLevel = value;
 			}
 		}
 
@@ -109,12 +117,12 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			get
 			{
-				return Dimmer.Step;
+				return Regulator.Step;
 			}
 
 			set
 			{
-				Dimmer.Step = value;
+				Regulator.Step = value;
 			}
 		}
 
@@ -122,7 +130,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			if (this.State == EPowerState.On)
 			{
-				Dimmer.Decrease();
+				Regulator.Decrease();
 			}
 		}
 
@@ -130,7 +138,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 		{
 			if (this.State == EPowerState.On)
 			{
-				Dimmer.Increase();
+				Regulator.Increase();
 			}
 		}
 
@@ -141,7 +149,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			{
 				case EPowerState.On:
 					string progress = new string('+', 10 * Brightness / BrightnessMax);
-					progress = string.Format("[{2}|{0}{1}|{3}]", progress, new string(' ', 10 - progress.Length), Dimmer.Min, Dimmer.Max);
+					progress = string.Format("[{2}|{0}{1}|{3}]", progress, new string(' ', 10 - progress.Length), Regulator.Min, Regulator.Max);
 
 					res = string.Format("{0}включена {1} {2}лм", res, progress, Brightness);
 					break;

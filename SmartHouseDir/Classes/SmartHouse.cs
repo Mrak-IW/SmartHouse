@@ -25,6 +25,14 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		public IList<ISmartDevice> Devices
+		{
+			get
+			{
+				return devices.Values;
+			}
+		}
+
 		public ISmartDevice this[int index]
 		{
 			get

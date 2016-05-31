@@ -7,7 +7,7 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Interfaces
 {
 	public interface IBrightable
 	{
-		IAdjustable<int> Dimmer { get; set; }
+		IAdjustable<int> Regulator { get; set; }
 		int Brightness { get; set; }
 		int BrightnessMax { get; set; }
 		int BrightnessMin { get; set; }

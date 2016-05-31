@@ -23,6 +23,14 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		public override string DeviceTypeSystem
+		{
+			get
+			{
+				return typeof(Clock).Name;
+			}
+		}
+
 		public virtual DateTime Time
 		{
 			get

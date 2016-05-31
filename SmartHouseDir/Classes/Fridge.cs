@@ -51,6 +51,14 @@ namespace HomeWorkSmartHouse.SmartHouseDir.Classes
 			}
 		}
 
+		public override string DeviceTypeSystem
+		{
+			get
+			{
+				return typeof(Fridge).Name;
+			}
+		}
+
 		public virtual bool IsOpened { get; set; }
 
 		public virtual int Temperature
