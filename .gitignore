@@ -2,5 +2,6 @@ bin/
 obj/
 Output/
 packages/
+.vs/
 .gitattributes
 *8-)*
